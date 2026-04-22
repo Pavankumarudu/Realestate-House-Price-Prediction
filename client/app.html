@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Banglore Home Price Prediction</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="app.js"></script>
+    <link rel="stylesheet" href="app.css">
+    <style>
+        /* Navigation bar styles */
+       .navbar {
+         display: flex;
+         justify-content: flex-end; /* Aligns items to the right */
+         background-color: #333; /* Background color */
+         padding: 14px 20px; /* Padding around the navbar */
+         position: fixed; /* Fixes the navbar to the top */
+         top: 0; /* Positions it at the top */
+         left: 0;
+         right: 0;
+         z-index: 100; /* Ensures it's above other elements */
+        }
+
+        .navbar-right {
+         margin-left: 20px; /* Space between buttons */
+        }
+
+        .navbar-button {
+         color: white; /* Text color */
+         text-decoration: none; /* Removes underline */
+         padding: 10px 15px; /* Padding for the buttons */
+         border-radius: 5px; /* Rounded corners */
+         transition: background-color 0.3s; /* Smooth transition for hover effect */
+        }
+
+        .navbar-button:hover {
+         background-color: #555; /* Background color on hover */
+        }    
+        h1 {
+            font-family: 'Arial', sans-serif;
+            font-size: 36px;
+            color: #101210fa;
+            text-align: center;
+            margin-top: 30px;
+            margin-bottom: 10px;
+        }
+        .heading-container {
+            background-color: #5ed539;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            margin: 20px;
+        }
+        .image-gallery {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin: 20px 0;
+        }
+        .image-gallery img {
+            width: 180px;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .navbar-right {
+            float: right;
+        }
+        html, body, h1, h2, h3, h4 {
+            font-family: "Lato", sans-serif;
+        }
+        .mySlides { display: none}
+        .w3-tag, .fa { cursor: pointer }
+        .w3-tag { height: 15px; width: 15px; padding: 0; margin-top: 6px; }
+    </style>
+</head>
+<body>
+
+    <div class="navbar">
+        <div class="navbar-right">
+            <a href="#home" class="navbar-button navbar-block">Home</a>
+        </div>
+        <div class="navbar-right">
+            <a href="#about" class="navbar-button navbar-block">About</a>
+        </div>
+        <div class="navbar-right">
+            <a href="#contact" class="navbar-button navbar-block">Contact</a>
+        </div>
+        <div class="navbar-right">
+            <a href="#design" class="navbar-button navbar-block">Design</a>
+        </div>
+        <div class="navbar-right">
+            <a href="#service" class="navbar-button navbar-block">Service</a>
+        </div>
+    </div>
+    <div class="heading-container" id="home">
+        <h1>Real Estate House Price Prediction</h1>
+    </div>
+    <div class="img"></div>
+    
+    <form class="form">
+        <h2>Area (Square Feet)</h2>
+        <input class="area" type="text" id="uiSqft" class="floatLabel" name="Squareft" value="1000">
+        <h2>BHK</h2>
+        <div class="switch-field">
+            <input type="radio" id="radio-bhk-1" name="uiBHK" value="1"/>
+            <label for="radio-bhk-1">1</label>
+            <input type="radio" id="radio-bhk-2" name="uiBHK" value="2" checked/>
+            <label for="radio-bhk-2">2</label>
+            <input type="radio" id="radio-bhk-3" name="uiBHK" value="3"/>
+            <label for="radio-bhk-3">3</label>
+            <input type="radio" id="radio-bhk-4" name="uiBHK" value="4"/>
+            <label for="radio-bhk-4">4</label>
+            <input type="radio" id="radio-bhk-5" name="uiBHK" value="5"/>
+            <label for="radio-bhk-5">5</label>
+        </div>
+    </form>
+    
+    <form class="form">
+        <h2>Bath</h2>
+        <div class="switch-field">
+            <input type="radio" id="radio-bath-1" name="uiBathrooms" value="1"/>
+            <label for="radio-bath-1">1</label>
+            <input type="radio" id="radio-bath-2" name="uiBathrooms" value="2" checked/>
+            <label for="radio-bath-2">2</label>
+            <input type="radio" id="radio-bath-3" name="uiBathrooms" value="3"/>
+            <label for="radio-bath-3">3</label>
+            <input type="radio" id="radio-bath-4" name="uiBathrooms" value="4"/>
+            <label for="radio-bath-4">4</label>
+            <input type="radio" id="radio-bath-5" name="uiBathrooms" value="5"/>
+            <label for="radio-bath-5">5</label>
+        </div>
+        <h2>Location</h2>
+        <div>
+            <select class="location" name="" id="uiLocations">
+                <option value="" disabled="disabled" selected="selected">Choose a Location</option>
+                <option>Electronic City</option>
+                <option>Rajaji Nagar</option>
+            </select>
+        </div>
+        <button class="submit" onclick="onClickedEstimatePrice()" type="button">Estimate Price</button>
+        <div id="uiEstimatedPrice" class="result"><h2></h2></div>
+        <a href="file:///C:/Code/BHP/client/design.html">
+          <button class="design" onclick="onClickedEstimateDesigns()" type="button">Estimate Designs</button>
+        </a>
+    </form>
+    <div class="about-section" id="about">
+        <h1>About Us Page</h1>
+        <p>Some text about who we are and what we do.</p>
+        <p>Real estate price predictions for 2024 indicate a complex landscape shaped by fluctuating interest rates,varying inventory levels, and demographic shifts. With the potential for stabilized or decreasing interest rates, buyer activity may increase, supporting home prices in some areas. However, rising inventory from new constructions could moderate growth, especially in urban centers. Economic factors, including employment rates, will also influence regional price trends, with some markets poised for resilience while others may face declines. Overall, a nuanced understanding of local conditions will be essential for navigating the upcoming year in real estate..</p>
+    <div class="container" id="contact">
+        <div style="text-align:center">
+            <h2>Contact Us</h2>
+            <p>Swing by for a cup of coffee, or leave us a message:</p>
+        </div>
+        <div class="row">
+            <div class="column">
+                <img src="C:\Users\LENOVO\Downloads\Real-Estate-Business1--1-.jpg" style="width:100%">
+            </div>
+            <div class="column">
+                <form action="file:///C:/Code/BHP/client/submit.html">
+                    <label for="fname">First Name</label>
+                    <input type="text" id="fname" name="firstname" placeholder="Your name..">
+                    <label for="lname">Last Name</label>
+                    <input type="text" id="lname" name="lastname" placeholder="Your last name..">
+                    <label for="State">State</label>
+                    <select id="State" name="State">
+                        <option value="andhra pradesh">Andhra Pradesh</option>
+                        <option value="tamilnadu">Tamilnadu</option>
+                        <option value="karnataka">Karnataka</option>
+                        <option value="maharastra">Maharastra</option>
+                        <option value="telangana">Telangana</option>
+                        <option value="goa">Goa</option>
+                    </select>
+                    <label for="subject">Subject</label>
+                    <textarea id="subject" name="subject" placeholder="Write something.." style="height:170px"></textarea>
+                    <a href="file:///C:/Code/BHP/client/submit.html">
+                      <input type="submit" value="Submit" name="">
+                    </a>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Design Section -->
+        <div class="design-section" id="design">
+              <div style="text-align:center">
+                <h2>Our Design Gallery</h2>
+                  <div class="image-gallery">
+                    <a  href="C:\Users\LENOVO\Downloads\download 1.jpg">
+                      <img src="C:\Users\LENOVO\Downloads\download 1.jpg" alt="Design Image 1"></a>
+                    <a  href="C:\Users\LENOVO\Downloads\download 2.jpg">
+                      <img src="C:\Users\LENOVO\Downloads\download 2.jpg" alt="Design Image 2"></a>
+                    <a  href="C:\Users\LENOVO\Downloads\download 3.jpg">
+                      <img src="C:\Users\LENOVO\Downloads\download 3.jpg" alt="Design Image 3"></a>
+                    <a  href="C:\Users\LENOVO\Downloads\download 4.jpg">
+                      <img src="C:\Users\LENOVO\Downloads\download 4.jpg" alt="Design Image 4"></a>
+                    <a  href="C:\Users\LENOVO\Downloads\download 5.jpg">
+                      <img src="C:\Users\LENOVO\Downloads\download 5.jpg" alt="Design Image 5"></a>
+                    <a  href="C:\Users\LENOVO\Downloads\download 6.jpg">
+                      <img src="C:\Users\LENOVO\Downloads\download 6.jpg" alt="Design Image 6"></a>
+                </div>
+                <h2> Our Interior Models</h2>
+                  <div class="image-gallery">
+                    <a  href="C:\Users\LENOVO\Downloads\interior 1.jpg">
+                      <img src="C:\Users\LENOVO\Downloads\interior 1.jpg" alt="Interior Image 1"></a>
+                    <a  href="C:\Users\LENOVO\Downloads\interior 4.jpg">
+                      <img src="C:\Users\LENOVO\Downloads\interior 4.jpg" alt="Interior Image 2"></a>
+                    <a  href="C:\Users\LENOVO\Downloads\interior 3.jpg">
+                      <img src="C:\Users\LENOVO\Downloads\interior 3.jpg" alt="Interior Image 3"></a>
+                    <a  href="C:\Users\LENOVO\Downloads\kichen 1.jpg">
+                      <img src="C:\Users\LENOVO\Downloads\kichen 1.jpg" alt="kitchen Image 4"></a>
+                    <a  href="C:\Users\LENOVO\Downloads\kitchen 3.jpg">
+                      <img src="C:\Users\LENOVO\Downloads\kitchen 3.jpg" alt="kitchen Image 5"></a>
+                    <a  href="C:\Users\LENOVO\Downloads\kitchen 2.jpg">
+                      <img src="C:\Users\LENOVO\Downloads\kitchen 2.jpg" alt="kitchen  Image 6"></a>
+                   </div> 
+               </div>
+        </div>        
+  <div class="Service" id="service">
+    <div style="text-align: center">
+        <h2>Our Services</h2>
+        <p>In the fast-paced world of real estate, understanding market trends and property values is crucial for making informed decisions. Our Price Prediction Service offers cutting-edge analysis and insights to help you navigate the complexities of real estate pricing.<br>
+
+          <b>  What We Offer:</b><br>
+            
+           <b>1.Data-Driven Insights:</b>
+            
+            We utilize advanced algorithms and machine learning techniques to analyze historical data, market trends, and various economic indicators. Our models provide accurate predictions of property prices in your desired area.<br>
+           <b>2.Local Market Analysis:</b>
+            
+            Our team of experts conducts in-depth analyses of local markets, considering factors such as neighborhood trends, property characteristics, and regional economic conditions. This localized approach ensures tailored predictions for specific markets.<br>
+           <b>3.Investment Opportunities:</b>
+            
+            For investors, we identify undervalued properties and areas with high growth potential. Our predictions help you pinpoint lucrative investment opportunities that align with your financial goals.<br>
+           <b>4.Risk Assessment:</b>
+            
+            Understanding potential risks is essential when buying or selling real estate. Our service provides a risk analysis, outlining potential price fluctuations and market volatility, enabling you to make more secure investment decisions.<br>
+           <b>5.User-Friendly Reports:</b>
+            
+            We deliver comprehensive reports that break down our findings in a clear and accessible manner. These reports include visualizations, market forecasts, and actionable insights to guide your decision-making process.<br>
+           <b>6.Consultation Services:</b>
+            
+            Our team is here to support you! We offer one-on-one consultations to discuss your specific needs and how our price prediction insights can benefit your real estate journey.<br>
+            <b>Why Choose Us?</b><br>
+            Expert Team: Our analysts have years of experience in real estate and data science, ensuring reliable and accurate predictions.
+            Proven Technology: We leverage the latest technology to process and analyze vast amounts of data, resulting in precise pricing forecasts.
+            Client-Centric Approach: Your goals are our priority. We tailor our services to meet your unique needs, whether you’re a first-time buyer, seasoned investor, or seller.
+            Contact Us Today: Don’t leave your real estate decisions to chance! Reach out to us today to learn more about our Price Prediction Service and how we can help you make informed decisions in the real estate market.</p>
+    </div>
+  </div>
+</body>
+</html>    
+        

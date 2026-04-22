@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<!-- saved from url=(0043)file:///C:/Code/BHP/client/app.html#service -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Banglore Home Price Prediction</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="./Banglore Home Price Prediction_files/app.js.download"></script>
+    <link rel="stylesheet" href="./Banglore Home Price Prediction_files/app.css">
+    <style>
+        /* Navigation bar styles */
+        .navbar {
+            background-color: #333;
+            overflow: hidden;
+        }
+        .navbar a {
+            float: left;
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 20px;
+            text-decoration: none;
+        }
+        .navbar a:hover {
+            background-color: #7cf748;
+            color: rgb(31, 17, 2);
+        }
+        .active {
+            background-color: #04AA6D;
+        }
+        @media screen and (max-width: 500px) {
+            .navbar-right {
+                float: none;
+                display: block;
+            }
+        }
+        
+        h1 {
+            font-family: 'Arial', sans-serif;
+            font-size: 36px;
+            color: #101210fa;
+            text-align: center;
+            margin-top: 20px;
+        }
+        .heading-container {
+            background-color: #5ed539;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            margin: 10px;
+        }
+        .image-gallery {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin: 20px 0;
+        }
+        .image-gallery img {
+            width: 180px;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .navbar-right {
+            float: left;
+        }
+        html, body, h1, h2, h3, h4 {
+            font-family: "Lato", sans-serif;
+        }
+        .mySlides { display: none}
+        .w3-tag, .fa { cursor: pointer }
+        .w3-tag { height: 15px; width: 15px; padding: 0; margin-top: 6px; }
+    </style>
+</head>
+<body>
+
+    <div class="navbar">
+        <div class="navbar-right">
+            <a href="file:///C:/Code/BHP/client/app.html#home" class="navbar-button navbar-block">Home</a>
+        </div>
+        <div class="navbar-right">
+            <a href="file:///C:/Code/BHP/client/app.html#about" class="navbar-button navbar-block">About</a>
+        </div>
+        <div class="navbar-right">
+            <a href="file:///C:/Code/BHP/client/app.html#contact" class="navbar-button navbar-block">Contact</a>
+        </div>
+        <div class="navbar-right">
+            <a href="file:///C:/Code/BHP/client/app.html#design" class="navbar-button navbar-block">Design</a>
+        </div>
+        <div class="navbar-right">
+            <a href="file:///C:/Code/BHP/client/app.html#service" class="navbar-button navbar-block">Service</a>
+        </div>
+    </div>
+    
+    <div class="heading-container">
+        <h1>Real Estate House Price Prediction</h1>
+    </div>
+    <div class="img"></div>
+    <form class="form">
+        <h2>Area (Square Feet)</h2>
+        <input class="area" type="text" id="uiSqft" name="Squareft" value="1000">
+        <h2>BHK</h2>
+        <div class="switch-field">
+            <input type="radio" id="radio-bhk-1" name="uiBHK" value="1">
+            <label for="radio-bhk-1">1</label>
+            <input type="radio" id="radio-bhk-2" name="uiBHK" value="2" checked="">
+            <label for="radio-bhk-2">2</label>
+            <input type="radio" id="radio-bhk-3" name="uiBHK" value="3">
+            <label for="radio-bhk-3">3</label>
+            <input type="radio" id="radio-bhk-4" name="uiBHK" value="4">
+            <label for="radio-bhk-4">4</label>
+            <input type="radio" id="radio-bhk-5" name="uiBHK" value="5">
+            <label for="radio-bhk-5">5</label>
+        </div>
+    </form>
+    
+    <form class="form">
+        <h2>Bath</h2>
+        <div class="switch-field">
+            <input type="radio" id="radio-bath-1" name="uiBathrooms" value="1">
+            <label for="radio-bath-1">1</label>
+            <input type="radio" id="radio-bath-2" name="uiBathrooms" value="2" checked="">
+            <label for="radio-bath-2">2</label>
+            <input type="radio" id="radio-bath-3" name="uiBathrooms" value="3">
+            <label for="radio-bath-3">3</label>
+            <input type="radio" id="radio-bath-4" name="uiBathrooms" value="4">
+            <label for="radio-bath-4">4</label>
+            <input type="radio" id="radio-bath-5" name="uiBathrooms" value="5">
+            <label for="radio-bath-5">5</label>
+        </div>
+        <h2>Location</h2>
+        <div>
+            <select class="location" id="uiLocations">
+                <option value="" disabled="disabled" selected="selected">Choose a Location</option>
+                <option>Electronic City</option>
+                <option>Rajaji Nagar</option>
+            </select>
+        </div>
+        <button class="submit" onclick="onClickedEstimatePrice()" type="button">Estimate Price</button>
+        <div id="uiEstimatedPrice" class="result"><h2></h2></div>
+    </form>
+
+    <div class="about-section" id="about">
+        <h1>About Us Page</h1>
+        <p>Some text about who we are and what we do.</p>
+        <p>Real estate price predictions for 2024 indicate a complex landscape shaped by fluctuating interest rates, varying inventory levels, and demographic shifts. With the potential for stabilized or decreasing interest rates, buyer activity may increase, supporting home prices in some areas. However, rising inventory from new constructions could moderate growth, especially in urban centers. Economic factors, including employment rates, will also influence regional price trends, with some markets poised for resilience while others may face declines. Overall, a nuanced understanding of local conditions will be essential for navigating the upcoming year in real estate.</p>
+    </div>
+      
+    <div class="container" id="contact">
+        <div style="text-align:center">
+            <h2>Contact Us</h2>
+            <p>Swing by for a cup of coffee, or leave us a message:</p>
+        </div>
+        <div class="row">
+            <div class="column">
+                <img src="./Banglore Home Price Prediction_files/Real-Estate-Business1--1-.jpg" style="width:100%">
+            </div>
+            <div class="column">
+                <form action="file:///C:/Code/BHP/client/submit.html">
+                    <label for="fname">First Name</label>
+                    <input type="text" id="fname" name="firstname" placeholder="Your name..">
+                    <label for="lname">Last Name</label>
+                    <input type="text" id="lname" name="lastname" placeholder="Your last name..">
+                    <label for="State">State</label>
+                    <select id="State" name="State">
+                        <option value="andhra pradesh">Andhra Pradesh</option>
+                        <option value="tamilnadu">Tamilnadu</option>
+                        <option value="karnataka">Karnataka</option>
+                        <option value="maharastra">Maharastra</option>
+                        <option value="telangana">Telangana</option>
+                        <option value="goa">Goa</option>
+                    </select>
+                    <label for="subject">Subject</label>
+                    <textarea id="subject" name="subject" placeholder="Write something.." style="height:170px"></textarea>
+                    <a href="file:///C:/Code/BHP/client/submit.html">
+                      <input type="submit" value="Submit" name="">
+                    </a>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Design Section -->
+        <div class="design-section" id="design">
+            <div style="text-align:center">
+                <h2>Our Design Gallery</h2>
+                <div class="image-gallery">
+                    <a target="_blank" href="./Banglore Home Price Prediction_files/download 1.jpg">
+                        <img src="./Banglore Home Price Prediction_files/download 1.jpg" alt="Design Image 1">
+                    </a>
+                    <a target="_blank" href="./Banglore Home Price Prediction_files/download 2.jpg">
+                        <img src="./Banglore Home Price Prediction_files/download 2.jpg" alt="Design Image 2">
+                    </a>
+                    <a target="_blank" href="./Banglore Home Price Prediction_files/download 3.jpg">
+                        <img src="./Banglore Home Price Prediction_files/download 3.jpg" alt="Design Image 3">
+                    </a>
+                    <a target="_blank" href="./Banglore Home Price Prediction_files/download 4.jpg">
+                        <img src="./Banglore Home Price Prediction_files/download 4.jpg" alt="Design Image 4">
+                    </a>
+                    <a target="_blank" href="./Banglore Home Price Prediction_files/download 5.jpg">
+                        <img src="./Banglore Home Price Prediction_files/download 5.jpg" alt="Design Image 5">
+                    </a>
+                    <a target="_blank" href="./Banglore Home Price Prediction_files/download 6.jpg">
+                        <img src="./Banglore Home Price Prediction_files/download 6.jpg" alt="Design Image 6">
+                    </a>
+                </div>
+            <div style="text-align:center">
+              <h2> Our Interior Models</h2>
+                 <div class="image-gallery">
+                    <img src="./Banglore Home Price Prediction_files/interior 1.jpg" alt="Interior Image 1">
+                    <img src="./Banglore Home Price Prediction_files/interior 4.jpg" alt="Interior Image 2">
+                    <img src="./Banglore Home Price Prediction_files/interior 3.jpg" alt="Interior Image 3">
+                    <img src="./Banglore Home Price Prediction_files/kichen 1.jpg" alt="kitchen Image 4">
+                    <img src="./Banglore Home Price Prediction_files/kitchen 3.jpg" alt="kitchen Image 5">
+                    <img src="./Banglore Home Price Prediction_files/kitchen 2.jpg" alt="kitchen  Image 6">
+                 </div> 
+            </div>        
+        </div>
+    </div>   
+
+    
+        
+</body></html>
